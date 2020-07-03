@@ -1,0 +1,6 @@
+ID
+IA
+ST
+JEQ 2 5
+JP -4
+XX
