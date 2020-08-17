@@ -18,8 +18,8 @@ A = tf.constant([[2.0, 0.0], [0.0, 1.0]])
 
 
 y, g = fun_obj(x, c, A)
-# print(y) # calculate y @ x = [5,2] -> 2*2^2 + 1^2 = 9
-# print(y_grad) # calculate the gradient @ [5,2] -> [4*5-12, 2*2-2] = [4, 2]
+#print(y) # calculate y @ x = [5,2] -> 2*2^2 + 1^2 = 9
+#print(g) # calculate the gradient @ [5,2] -> [4*5-12, 2*2-2] = [8, 2]
 
 # now we run a gradient descent algorithm
 
