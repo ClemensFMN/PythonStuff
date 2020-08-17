@@ -1,0 +1,24 @@
+import tensorflow as tf
+
+
+c = tf.constant(1, name = "initial value")
+n = tf.Variable(1, name="n")
+
+fct = c*n
+
+update_op = tf.assign(n, fct)
+
+# init all variables
+init = tf.global_variables_initializer()
+
+# computation graph is finished, now obtain a session
+with tf.Session() as sess:
+    sess.run(init) # init
+    for nrange in range(5):
+        print(nrange)
+        sess.run(update_op)
+
+print(f.eval)
+
+
+

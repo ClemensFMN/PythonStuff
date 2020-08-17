@@ -1,0 +1,17 @@
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+a = 1.0
+b = 2.0
+d = 1.0
+
+N = 10
+
+p_train = np.random.uniform(low=-5.0, high=5.0, (N,2))
+
+for (x,y) in x_train:
+    print(x,y)
+    
+
+

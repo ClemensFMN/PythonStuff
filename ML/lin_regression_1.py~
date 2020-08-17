@@ -1,0 +1,7 @@
+import tensorflow as tf
+
+ktrue = 1.2
+dtrue = 0.4
+
+x = [0,1,2,3,4]
+y = ktrue * x + d
