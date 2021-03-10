@@ -10,41 +10,40 @@ class PubProtocol(basic.LineReceiver):
         self.factory = factory
 
     def connectionMade(self):
-        # self.factory.clients.add(self)
-        print("Connection from {}".format(self))
+        print("Connection from {}".format(self)) # log that someone connected
 
     def connectionLost(self, reason):
-        self.factory.clients.remove(self)
+        # self.factory.clients.pop(self) TODO: make working
 
     def lineReceived(self, line):
-        lineu = line.decode("utf-8")
-        prsd = re.split(r'\W+', lineu)
-        cmd = prsd[0]
+        lineu = line.decode("utf-8") # convert the byte array to an utf-8 string
+        prsd = re.split(r'\W+', lineu) # split into string separated by spaces
+        cmd = prsd[0] # the first chunk is the "command"
         
-        if(cmd == "NAME"):
-            data = prsd[1]
+        if(cmd == "NAME"): # client defines the name
+            data = prsd[1] # this is the name
             print("client with name {} connected".format(data))
-            self.factory.clients[data] = self
-            print(self.factory.clients)
-        elif(cmd == "LIST"):
-            print(self.factory.clients)
-        elif(cmd == "SAY"):
+            self.factory.clients[data] = self # add to client dict
+            # print(self.factory.clients)
+        elif(cmd == "LIST"): # see list of connected clients
+            print(self.factory.clients) # TODO: send back to client
+        elif(cmd == "SAY"): # pub message to all clients (including ourselves)
             for name, protocol in self.factory.clients.items():
                 source = u"<{}> ".format(self.transport.getHost()).encode("ascii")
                 protocol.sendLine(source + line)
-                # send only to the others
+                # send only to the other clients
                 #if c != self: 
                 #    source = u"<{}> ".format(self.transport.getHost()).encode("ascii")
                 #    c.sendLine(source + line)
-        elif(cmd == "SAYTO"):
-            to = prsd[1]
+        elif(cmd == "SAYTO"): # send msg to specific client
+            to = prsd[1] # recipient
             protocol = self.factory.clients.get(to)
-            if(protocol == None):
+            if(protocol == None): # recipient not found 
                 self.sendLine(b"recipient not found")
-            else:
+            else: # recipient found
                 print(protocol)
                 source = u"<{}> ".format(self.transport.getHost()).encode("ascii")
-                protocol.sendLine(source + line)
+                protocol.sendLine(source + line) # -> send message
         else:
             print("unknown command")
 
