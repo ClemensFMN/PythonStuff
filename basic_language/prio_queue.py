@@ -19,9 +19,11 @@ hq.heappush(h, (7, 'release product'))
 hq.heappush(h, (1, 'write spec'))
 hq.heappush(h, (3, 'create tests'))
 
+print(h)
+
 # items get popped based on prio (lowest first)
-print hq.heappop(h)
-print hq.heappop(h)
+print(hq.heappop(h))
+print(hq.heappop(h))
 
-
+print(h)
 

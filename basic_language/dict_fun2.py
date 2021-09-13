@@ -40,7 +40,7 @@ for item in stemp:
     s_enc += enc_table[item[0]]
 
 
-print s_enc
+print(s_enc)
 
 
 
@@ -52,5 +52,5 @@ for item in s_enc_temp:
     dec_table = dec[item[1]]
     s_dec += dec_table[item[0]]
 
-print s_dec
+print(s_dec)
 

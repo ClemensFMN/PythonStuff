@@ -17,7 +17,7 @@ y = np.linspace(-1,1,50)
 
 X,Y = np.meshgrid(x,y)
 
-Z = 2*X**2+3*Y**2
+Z = 1.5*(X-0.3)**2+3*Y**2
 
 lvls = np.linspace(0,5,11)
 # lvls = np.logspace(-5,1,20)

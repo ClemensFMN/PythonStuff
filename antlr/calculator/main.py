@@ -14,18 +14,33 @@ from antlr4 import *
 
 
 class MyVisitor(LabeledExprVisitor):
+    
+    vars = {}
+    
     def visitPrintExpr(self, ctx:LabeledExprParser.PrintExprContext):
         val = self.visit(ctx.expr())
         print("visitPrintExpr: {}".format(val))
     
     def visitInt(self, ctx:LabeledExprParser.IntContext):
         val = ctx.INT()
-        print("visitInt: {}".format(val))
+        # print("visitInt: {}".format(val))
         return(val)
 
     def visitId(self, ctx:LabeledExprParser.IdContext):
-        id = ctx.ID()
-        print("visitId: {}".format(id))
+        id = ctx.ID().getText()
+        #print("visitId: id = {}".format(id))
+        val = self.vars[id]
+        print("visitId: id = {} => {}".format(id, val))
+        #print(type(val))
+        return(val)
+
+    def visitAssign(self, ctx:LabeledExprParser.AssignContext):
+        id = ctx.ID().getText()
+        val = self.visit(ctx.expr()) #.getText()
+        self.vars[id] = val
+        print("visitAssign: {} = {}".format(id, val))
+        print("self.vars = {}".format(self.vars))
+        
     
     def visitMulDiv(self, ctx:LabeledExprParser.MulDivContext):
         left = self.visit(ctx.expr(0)).getText()

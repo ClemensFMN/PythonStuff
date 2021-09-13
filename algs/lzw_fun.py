@@ -12,7 +12,7 @@ def compress(uncompressed):
  
     # Build the dictionary.
     dict_size = 58
-    dictionary = dict((chr(i), chr(i)) for i in xrange(65, 65 + dict_size))
+    dictionary = dict((chr(i), chr(i)) for i in range(65, 65 + dict_size))
     dictionary[' '] = ' '
 
     w = ""
@@ -41,7 +41,7 @@ def decompress(compressed):
  
     # Build the dictionary.
     dict_size = 58
-    dictionary = dict((chr(i), chr(i)) for i in xrange(65, 65 + dict_size))
+    dictionary = dict((chr(i), chr(i)) for i in range(65, 65 + dict_size))
     dictionary[' '] = ' '
 
     w = result = compressed.pop(0)

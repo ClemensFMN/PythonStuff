@@ -33,10 +33,10 @@ def f2(x, alpha):
 x = np.linspace(-np.pi, np.pi, 100)
 y1, y2 = f2(x, 1.3)
 plt.plot(x, y1, '-g', label='f1(x)')
-plt.plot(x, y2, '-r', label='f1(x)')
+plt.plot(x, y2, '-r', label='f2(x)')
 plt.title('Two-function Plot')
 
 plt.legend()
 plt.grid()
-plt.savefig("output.png")
+# plt.savefig("output.png")
 plt.show()

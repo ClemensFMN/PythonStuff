@@ -31,7 +31,7 @@ enc_dict = dict(zip(list(letters), letters_list))
 # here we create the reversed dict which allows efficient decoding...
 dec_dict = dict(zip(letters_list, list(letters)))
 
-print enc_dict
+print(enc_dict)
 
 s_enc = ""
 
@@ -39,12 +39,12 @@ s_enc = ""
 for item in s:
     s_enc += enc_dict[item]
 
-print s_enc
+print(s_enc)
 
 s_dec = ""
 
 for item in s_enc:
     s_dec += dec_dict[item]
 
-print s_dec
+print(s_dec)
 

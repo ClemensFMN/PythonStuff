@@ -11,13 +11,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     conn, addr = s.accept()
     with conn:
         print('Connected by', addr)
-            # we prepare to receive a large number of bytes to receive
-            # if fewer bytes were sent, then the method returns fewer anyway...
+            # different to the other server, we prepare to receive fewer bytes
+        buf = b''
         while True:
-            data = conn.recv(1024)
+            data = conn.recv(4)
             print('Received. ', len(data))
-            print('Received', data)
-            if len(data) == 0:
-                print("nothing more received")
-                break
-            conn.sendall(data.upper())
+            while(len(data) != 0):
+                buf = buf + data
+                print('Buffer: ', buf)
+                data = conn.recv(3)
+                print('Received: ', len(data))
+            print('done')
+            conn.sendall(buf.upper())
