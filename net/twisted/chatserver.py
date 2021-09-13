@@ -1,5 +1,10 @@
 # from https://twistedmatrix.com/documents/current/core/howto/servers.html
 
+# a simple chat server. you need to provide your name first.
+# then you can list all users & say something to everyone
+# as client use telnet localhost 8123
+
+
 from twisted.internet.protocol import Factory
 from twisted.protocols.basic import LineReceiver
 from twisted.internet import reactor

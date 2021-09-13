@@ -14,14 +14,10 @@ c = (2*x for x in a if x%2==0)
 d = ((x,2*x) for x in a)
 
 for i in b:
-    print i
-
-print ''
+    print(i)
 
 for i in c:
-    print i
-
-print ''
+    print(i)
 
 for i in d:
-    print i , "   " , i[0] , "->" , i[1]
+    print(i , "   " , i[0] , "->" , i[1])
