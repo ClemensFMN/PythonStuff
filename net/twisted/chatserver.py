@@ -11,8 +11,8 @@ from twisted.internet import reactor
 
 
 class Chat(LineReceiver):
-    def __init__(self, users):
-        self.users = users
+    def __init__(self, factory):
+        self.factory = factory
         self.name = None
         self.state = "GETNAME"
 
@@ -20,8 +20,8 @@ class Chat(LineReceiver):
         self.sendLine(b"What's your name?")
 
     def connectionLost(self, reason):
-        if self.name in self.users:
-            del self.users[self.name]
+        if self.name in self.factory.users:
+            del self.factory.users[self.name]
 
     def lineReceived(self, line):
         if self.state == "GETNAME":
@@ -30,24 +30,24 @@ class Chat(LineReceiver):
             self.handle_CHAT(line)
 
     def handle_GETNAME(self, name):
-        if name in self.users:
+        if name in self.factory.users:
             self.sendLine(b"Name taken, please choose another.")
             return
         self.sendLine(b"Welcome, " + name)
         self.name = name
-        self.users[name] = self
+        self.factory.users[name] = self
         self.state = "CHAT"
-        print(self.users)
+        print(self.factory.users)
 
     def handle_CHAT(self, message):
         if(message == b"LIST"): # we define a command which lists all users
             message = b"Current users: " # build up a response by listing all users
-            users = self.users.keys()
+            users = self.factory.users.keys()
             message += b", ".join(users)
             self.sendLine(message) # and send this back to the client who issued the "LIST" command
         else:
             message = self.name + b": " + message # otherwise we simply send what we received to all other clients
-            for name, protocol in self.users.items():
+            for name, protocol in self.factory.users.items():
                 if protocol != self:
                     protocol.sendLine(message)
 
@@ -57,7 +57,7 @@ class ChatFactory(Factory):
         self.users = {}  # maps user names to Chat instances
 
     def buildProtocol(self, addr):
-        return Chat(self.users)
+        return Chat(self)
 
 
 reactor.listenTCP(8123, ChatFactory())
