@@ -39,7 +39,7 @@ class MyVisitor(LabeledExprVisitor):
         val = self.visit(ctx.expr()) #.getText()
         self.vars[id] = val
         print("visitAssign: {} = {}".format(id, val))
-        print("self.vars = {}".format(self.vars))
+        # print("self.vars = {}".format(self.vars))
         
     
     def visitMulDiv(self, ctx:LabeledExprParser.MulDivContext):
@@ -69,6 +69,10 @@ class MyVisitor(LabeledExprVisitor):
             res = int(left) - int(right)
         return res
                 
+    def visitShow(self, ctx:LabeledExprParser.ShowContext):
+        print("All variables in scope:")
+        for nm, vl in self.vars.items():
+            print('{} => {}'.format(nm, vl))
 
     
 

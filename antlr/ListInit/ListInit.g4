@@ -5,7 +5,7 @@ stat: expr NEWLINE
     ;
 
 expr: '[' INT ']'          # OneInt
-    | '[' INT '+' INT ']'  # TwoInt
+    | '[' INT ',' INT ']'  # TwoInt
     ;
 
 INT     : [0-9]+ ;

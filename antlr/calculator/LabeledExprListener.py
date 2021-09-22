@@ -62,6 +62,15 @@ class LabeledExprListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LabeledExprParser#show.
+    def enterShow(self, ctx:LabeledExprParser.ShowContext):
+        pass
+
+    # Exit a parse tree produced by LabeledExprParser#show.
+    def exitShow(self, ctx:LabeledExprParser.ShowContext):
+        pass
+
+
     # Enter a parse tree produced by LabeledExprParser#id.
     def enterId(self, ctx:LabeledExprParser.IdContext):
         pass

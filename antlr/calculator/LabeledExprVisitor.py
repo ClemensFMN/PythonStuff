@@ -39,6 +39,11 @@ class LabeledExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LabeledExprParser#show.
+    def visitShow(self, ctx:LabeledExprParser.ShowContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LabeledExprParser#id.
     def visitId(self, ctx:LabeledExprParser.IdContext):
         return self.visitChildren(ctx)

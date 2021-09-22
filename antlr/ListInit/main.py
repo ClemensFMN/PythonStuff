@@ -24,8 +24,7 @@ class MyVisitor(ListInitVisitor):
         print(ctx.INT(1))
         return self.visitChildren(ctx)
 
-    
-                
+
 
 def main():
     input_stream = FileStream('inp.txt')

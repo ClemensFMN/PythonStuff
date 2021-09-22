@@ -11,21 +11,22 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\13")
-        buf.write(")\4\2\t\2\4\3\t\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\f")
+        buf.write("*\4\2\t\2\4\3\t\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3")
         buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\27\n\3\3\4\3\4")
-        buf.write("\3\4\5\4\34\n\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4$\n\4\f\4\16")
-        buf.write("\4\'\13\4\3\4\2\3\6\5\2\4\6\2\4\3\2\4\5\3\2\6\7\2+\2\t")
-        buf.write("\3\2\2\2\4\26\3\2\2\2\6\33\3\2\2\2\b\n\5\4\3\2\t\b\3\2")
-        buf.write("\2\2\n\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2")
-        buf.write("\2\r\16\5\6\4\2\16\17\7\n\2\2\17\27\3\2\2\2\20\21\7\b")
-        buf.write("\2\2\21\22\7\3\2\2\22\23\5\6\4\2\23\24\7\n\2\2\24\27\3")
-        buf.write("\2\2\2\25\27\7\n\2\2\26\r\3\2\2\2\26\20\3\2\2\2\26\25")
-        buf.write("\3\2\2\2\27\5\3\2\2\2\30\31\b\4\1\2\31\34\7\t\2\2\32\34")
-        buf.write("\7\b\2\2\33\30\3\2\2\2\33\32\3\2\2\2\34%\3\2\2\2\35\36")
-        buf.write("\f\6\2\2\36\37\t\2\2\2\37$\5\6\4\7 !\f\5\2\2!\"\t\3\2")
-        buf.write("\2\"$\5\6\4\6#\35\3\2\2\2# \3\2\2\2$\'\3\2\2\2%#\3\2\2")
-        buf.write("\2%&\3\2\2\2&\7\3\2\2\2\'%\3\2\2\2\7\13\26\33#%")
+        buf.write("\3\4\3\4\5\4\35\n\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4%\n\4\f")
+        buf.write("\4\16\4(\13\4\3\4\2\3\6\5\2\4\6\2\4\3\2\5\6\3\2\7\b\2")
+        buf.write("-\2\t\3\2\2\2\4\26\3\2\2\2\6\34\3\2\2\2\b\n\5\4\3\2\t")
+        buf.write("\b\3\2\2\2\n\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3")
+        buf.write("\3\2\2\2\r\16\5\6\4\2\16\17\7\13\2\2\17\27\3\2\2\2\20")
+        buf.write("\21\7\t\2\2\21\22\7\3\2\2\22\23\5\6\4\2\23\24\7\13\2\2")
+        buf.write("\24\27\3\2\2\2\25\27\7\13\2\2\26\r\3\2\2\2\26\20\3\2\2")
+        buf.write("\2\26\25\3\2\2\2\27\5\3\2\2\2\30\31\b\4\1\2\31\35\7\n")
+        buf.write("\2\2\32\35\7\t\2\2\33\35\7\4\2\2\34\30\3\2\2\2\34\32\3")
+        buf.write("\2\2\2\34\33\3\2\2\2\35&\3\2\2\2\36\37\f\7\2\2\37 \t\2")
+        buf.write("\2\2 %\5\6\4\b!\"\f\6\2\2\"#\t\3\2\2#%\5\6\4\7$\36\3\2")
+        buf.write("\2\2$!\3\2\2\2%(\3\2\2\2&$\3\2\2\2&\'\3\2\2\2\'\7\3\2")
+        buf.write("\2\2(&\3\2\2\2\7\13\26\34$&")
         return buf.getvalue()
 
 
@@ -39,10 +40,10 @@ class LabeledExprParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'='", "'*'", "'/'", "'+'", "'-'" ]
+    literalNames = [ "<INVALID>", "'='", "'$'", "'*'", "'/'", "'+'", "'-'" ]
 
-    symbolicNames = [ "<INVALID>", "<INVALID>", "MUL", "DIV", "ADD", "SUB", 
-                      "ID", "INT", "NEWLINE", "WS" ]
+    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "MUL", "DIV", 
+                      "ADD", "SUB", "ID", "INT", "NEWLINE", "WS" ]
 
     RULE_prog = 0
     RULE_stat = 1
@@ -52,14 +53,15 @@ class LabeledExprParser ( Parser ):
 
     EOF = Token.EOF
     T__0=1
-    MUL=2
-    DIV=3
-    ADD=4
-    SUB=5
-    ID=6
-    INT=7
-    NEWLINE=8
-    WS=9
+    T__1=2
+    MUL=3
+    DIV=4
+    ADD=5
+    SUB=6
+    ID=7
+    INT=8
+    NEWLINE=9
+    WS=10
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -120,7 +122,7 @@ class LabeledExprParser ( Parser ):
                 self.state = 9 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << LabeledExprParser.ID) | (1 << LabeledExprParser.INT) | (1 << LabeledExprParser.NEWLINE))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << LabeledExprParser.T__1) | (1 << LabeledExprParser.ID) | (1 << LabeledExprParser.INT) | (1 << LabeledExprParser.NEWLINE))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -359,6 +361,28 @@ class LabeledExprParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class ShowContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a LabeledExprParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterShow" ):
+                listener.enterShow(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitShow" ):
+                listener.exitShow(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitShow" ):
+                return visitor.visitShow(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class IdContext(ExprContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a LabeledExprParser.ExprContext
@@ -418,7 +442,7 @@ class LabeledExprParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 25
+            self.state = 26
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [LabeledExprParser.INT]:
@@ -436,11 +460,18 @@ class LabeledExprParser ( Parser ):
                 self.state = 24
                 self.match(LabeledExprParser.ID)
                 pass
+            elif token in [LabeledExprParser.T__1]:
+                localctx = LabeledExprParser.ShowContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 25
+                self.match(LabeledExprParser.T__1)
+                pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 35
+            self.state = 36
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -448,17 +479,17 @@ class LabeledExprParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 33
+                    self.state = 34
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
                     if la_ == 1:
                         localctx = LabeledExprParser.MulDivContext(self, LabeledExprParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 27
-                        if not self.precpred(self._ctx, 4):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
                         self.state = 28
+                        if not self.precpred(self._ctx, 5):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
+                        self.state = 29
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==LabeledExprParser.MUL or _la==LabeledExprParser.DIV):
@@ -466,18 +497,18 @@ class LabeledExprParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 29
-                        self.expr(5)
+                        self.state = 30
+                        self.expr(6)
                         pass
 
                     elif la_ == 2:
                         localctx = LabeledExprParser.AddSubContext(self, LabeledExprParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 30
-                        if not self.precpred(self._ctx, 3):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
                         self.state = 31
+                        if not self.precpred(self._ctx, 4):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
+                        self.state = 32
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==LabeledExprParser.ADD or _la==LabeledExprParser.SUB):
@@ -485,12 +516,12 @@ class LabeledExprParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 32
-                        self.expr(4)
+                        self.state = 33
+                        self.expr(5)
                         pass
 
              
-                self.state = 37
+                self.state = 38
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
 
@@ -516,11 +547,11 @@ class LabeledExprParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 4)
+                return self.precpred(self._ctx, 5)
          
 
             if predIndex == 1:
-                return self.precpred(self._ctx, 3)
+                return self.precpred(self._ctx, 4)
          
 
 

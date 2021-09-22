@@ -1,21 +1,15 @@
-antlr4 -Dlanguage=Python3 ListInit.g4
+I installed antlr4 and the python extensions
 
-use the provided antlr jar file (that matches the 
+pacman -S antlr4 python-antlr4 as well.
+
+For whatever reason, I don't get the antlr4 shell script tool to run and this tool is required to create the python (class) files from a g4 file.
+
+So there are two options:
+
+#1 We use the jar file provided by the package. Advantage is that versions between antlr4 and the python extensions match.
+
+java -jar /usr/share/java/antlr-4.9.2-complete.jar -Dlanguage=Python3 -visitor ListInit.g4
+
+#2 We download the antlr4 jar file from the natlr4 website & use this for generating the python (class) files.
 
 java -jar antlr-4.9.2-complete.jar -Dlanguage=Python3 -visitor ListInit.g4
-
-
-alias antlr4='java -Xmx500M -cp "/home/clnovak/bin/antlr-4.9.2-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
-alias grun='java -Xmx500M -cp "/home/clnovak/bin/antlr-4.9.2-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
-
-antlr4 LabeledExpr.g4
-
-ompile the java source files
-
-javac -cp "/home/clnovak/bin/antlr-4.9.2-complete.jar:$CLASSPATH" LabeledExpr*.java
-
-Run the shit - careful, stat must be the top-level rule from the grammar file (Expr.g4)
-
-grun LabeledExpr prog -tree
-
-enter 4+5, press enter, and press C-d
