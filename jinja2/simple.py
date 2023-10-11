@@ -1,14 +1,14 @@
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import *
 
+# inside the environment, we can define what should happen when a template variable is not provided (default action is to replace with an empty string which may not always be the best option...)
 env = Environment(
-    loader=FileSystemLoader("."))
+    loader=FileSystemLoader("."), undefined = StrictUndefined)
 
 template = env.get_template("simple.tmpl")
 
 s = template.render({'var1': 'Hello', 'var2': 'World'})
 print(s)
 
-# TODO: How can I raise an error / exception when a variable used in a template is *not* provided?
 s = template.render({'var1': 'Hello'})
 print(s)
 
