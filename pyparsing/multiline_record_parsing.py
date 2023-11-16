@@ -56,6 +56,8 @@ print(res)
 garbage = Group(OneOrMore(Word(alphas)) + FollowedBy('999'))("garbage")
 record = kdnr + garbage + Literal('999')
 
+# record = kdnr + Group(OneOrMore(Word(alphanums))) + Literal('999') + StringEnd()
+
 
 record_test='''1000K345 
 dfdfsdf dsfsdf dsvfdb
