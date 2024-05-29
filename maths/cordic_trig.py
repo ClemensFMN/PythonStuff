@@ -1,11 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue May 14 09:56:56 2024
-
-@author: 700001473
-"""
-
-# https://en.wikipedia.org/wiki/CORDIC
+# cordic in rotation mode for calculating sin / cos
+# Inspired by https://en.wikipedia.org/wiki/CORDIC
 
 from math import atan2, sqrt, sin, cos, radians
 
@@ -36,11 +30,12 @@ def CORDIC(alpha, n):
     return x * K_n, y * K_n
 
 if __name__ == "__main__":
-    # Print a table of computed sines and cosines, from -90° to +90°, in steps of 15°,
-    # comparing against the available math routines.
-    print("  x       sin(x)     diff. sine     cos(x)    diff. cosine ")
-    for x in range(-90, 91, 15):
-        cos_x, sin_x = CORDIC(radians(x), ITERS)
-        print(
-            f"{x:+05.1f}°  {sin_x:+.8f} ({sin_x-sin(radians(x)):+.8f}) {cos_x:+.8f} ({cos_x-cos(radians(x)):+.8f})"
-        )
+    # calc sin/cos for value beta
+    beta = radians(45)
+    cos_x, sin_x = CORDIC(beta, ITERS)
+    cos_true = cos(beta)
+    sin_true = sin(beta)
+    print(
+        f"Values for beta {beta:.8f} \n CORDIC: cos = {cos_x:.8f}, sin = {sin_x:.8f}\n True:   cos = {cos_true:.8f}, sin = {sin_true:.8f}"
+    )
+
