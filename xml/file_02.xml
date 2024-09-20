@@ -1,0 +1,18 @@
+<library>
+    <book>
+        <id>
+            <ida>33454</ida>
+        </id>
+        <title>Title 3</title>
+        <author>Author 3</author>
+        <price>10.09</price>
+    </book>
+    <book>
+        <id>
+            <ida>9879767</ida>
+        </id>
+        <title>Title 4</title>
+        <author>Author 4</author>
+        <price>0.99</price>
+    </book>
+</library>
