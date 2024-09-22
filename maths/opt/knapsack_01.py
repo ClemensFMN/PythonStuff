@@ -9,10 +9,14 @@ import numpy as np
 
 
 wvec = [2, 3, 5]
-vvec = [3, 5, 1]
-
-
+vvec = [3, 5, 7]
 W = 5
+
+# taken from Kellerer et al, Knapsack Problems (p. 16)
+#wvec = [2, 3, 6, 7, 5, 9, 4]
+#vvec = [6, 5, 8, 9, 6, 7, 3]
+#W = 9
+
 
 n = len(wvec)
 
